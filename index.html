@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./css/app.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="player">
+        <div class="dashboard">
+            <div class="info">
+
+            </div>
+
+            <div class="cd">
+                <div class="cd__thumb">
+                    <img src="./images/giphy.gif" alt="">
+                </div>
+            </div>
+
+            <div class="controls">
+
+                <audio id="audio" hidden src=""></audio>
+
+                <div class="slider-wrap">
+                    <input id="progress" class="slider" value="0" type="range" min="0" max="100">
+                </div>
+
+                <ul class="controls-list">
+                    <li>
+                        <div class="btn-repeat">
+                            <i class="fa fa-repeat"></i>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-prev">
+                            <i class="fa fa-step-backward"></i>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="circle">
+                            <span class="circle__btn">
+                             <i class="fa fa-play play">
+                             </i>
+                             <i class="fa fa-pause pause">
+                            </i>
+                            <span class="circle__shadow"></span>
+                            </span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-next">
+                            <i class="fa fa-step-forward"></i>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="btn-random">
+                            <i class="fa fa-random"></i>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="play-list">
+            <ul class="songs-list">
+
+            </ul>
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+</body>
+
+</html>

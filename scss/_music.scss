@@ -1,0 +1,336 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $greyLight-1;
+}
+
+.info {
+    text-align: center;
+    margin-bottom: 20px;
+    &__sub-title {
+        color: $greyDark;
+        font-size: 13px;
+        margin-bottom: 5px;
+        display: inline-block;
+        text-transform: capitalize;
+    }
+    &__title {
+        color: $primary;
+        font-size: 20px;
+        font-weight: 700;
+    }
+}
+
+.player {
+    width: 375px;
+    max-height: 615px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    overflow-y: scroll;
+    box-shadow: 0 0.8rem 1.4rem $greyLight-2, -0.2rem -0.2rem 1.8rem $white;
+    background-color: $greyLight-1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    .dashboard {
+        padding: 10px 20px 20px 20px;
+        width: 100%;
+        position: sticky;
+        top: -1px;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: 999;
+        background-color: $greyLight-1;
+    }
+}
+
+.controls {
+    margin-top: 5px;
+    &-list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 10px;
+        >li {
+            padding: 0 15px;
+            cursor: pointer;
+            color: $gray;
+            >* {
+                padding: 5px 10px;
+            }
+            .is-active i {
+                color: $primary;
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+.circle {
+    display: block;
+    &__btn {
+        position: relative;
+        z-index: 10;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $primary;
+        box-shadow: $shadow;
+        border-radius: 50%;
+        box-shadow: 0.3rem 0.3rem 0.6rem $greyLight-2, -0.2rem -0.2rem 0.5rem $white;
+        background-color: $greyLight-1;
+        .circle__shadow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+            // background-color: $greyLight-1;
+            box-shadow: 0.3rem 0.3rem 0.6rem $greyLight-2, -0.2rem -0.2rem 0.5rem $white;
+            border-radius: 50%;
+            &::before {
+                content: "";
+                z-index: -1;
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                display: inline-block;
+                box-shadow: .4rem .4rem .8rem $greyLight-2, -.4rem -.4rem .8rem $white;
+                background: linear-gradient(to bottom right, $greyLight-2 0%, $white 100%);
+                animation: waves 4s linear infinite;
+                border-radius: 50%;
+            }
+            &::after {
+                content: "";
+                z-index: -1;
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                display: inline-block;
+                box-shadow: .4rem .4rem .8rem $greyLight-2, -.4rem -.4rem .8rem $white;
+                animation: waves 4s linear 2s infinite;
+                border-radius: 50%;
+            }
+        }
+        .play {
+            transition: all .2s linear;
+        }
+        .pause {
+            position: absolute;
+            transition: all .2s linear;
+        }
+        >* {
+            font-size: 20px;
+        }
+    }
+}
+
+.circle {
+    &.playing {
+        .circle__btn {
+            .play {
+                opacity: 0;
+            }
+            .pause {
+                opacity: 1;
+            }
+            .circle__shadow {
+                &::before {
+                    opacity: 1;
+                }
+                &::after {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+.circle {
+    &:not(.playing) {
+        .circle__btn {
+            .play {
+                opacity: 1;
+            }
+            .pause {
+                opacity: 0;
+            }
+            .circle__shadow {
+                &::before {
+                    opacity: 0;
+                    display: none;
+                }
+                &::after {
+                    opacity: 0;
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.cd {
+    width: 200px;
+    margin: 0 auto;
+    &__thumb {
+        position: relative;
+        padding-top: 100%;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: inset 0.2rem 0.2rem 0.5rem $greyLight-2, inset -0.2rem -0.2rem 0.5rem $white;
+        >img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+        }
+    }
+}
+
+.slider-wrap {
+    margin-bottom: 25px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    margin-right: 15px;
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    background-image: linear-gradient( -1deg, $primary-dark 0%, $primary 50%, $primary-light 100%);
+    background-repeat: no-repeat;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background: $white;
+    cursor: ew-resize;
+    box-shadow: 0 0 2px 0 #555;
+    transition: all .3s;
+}
+
+.slider:hover::-webkit-slider-thumb {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.slider::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+}
+
+// play-list
+.play-list {
+    padding: 10px 10px 10px 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    // margin-top: 394px;
+    background-color: $greyLight-1;
+    box-shadow: 0 0 17px 0 $white;
+    border-radius: 5px;
+    height: 615px;
+    .songs-list {
+        margin: -7.5px;
+        .song-item {
+            padding: 7.5px;
+            .song {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                background-color: $white;
+                padding: 5px 0 5px 20px;
+                position: relative;
+                border-radius: 5px;
+                box-shadow: 0.3rem 0.3rem 0.6rem $greyLight-2, -0.2rem -0.2rem 0.5rem $white;
+                &.is-active {
+                    background-color: $primary-light;
+                    .song__author {
+                        color: $white;
+                    }
+                }
+                &__thumb {
+                    margin-right: 20px;
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    >img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                &__text {
+                    display: flex;
+                    flex: 1;
+                    flex-direction: column;
+                    padding-right: 45px;
+                }
+                &__more {
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    transform: translateY(-50%);
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    cursor: pointer;
+                }
+                &__name {
+                    font-weight: 600;
+                    font-size: 16px;
+                    margin-bottom: 3px;
+                }
+                &__author {
+                    font-size: 12px;
+                    color: $greyDark;
+                }
+            }
+        }
+    }
+}
+
+// @keyframes waves {
+//     0% {
+//         transform: scale(1);
+//         opacity: 1;
+//     }
+//     25% {
+//         opacity: 1;
+//     }
+//     50% {
+//         transform: scale(2);
+//         opacity: 0;
+//     }
+//     75%{
+//     }
+//     100% {
+//         transform: scale(2);
+//         opacity: 0;
+//     }
+// }
+@keyframes waves {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
